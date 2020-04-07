@@ -61,11 +61,21 @@ if [ -n "$PLUGIN_NAME" ]; then
 fi
 
 # Install the plugin
+# if  [ ! -L "${PLUGIN_FOLDER}/${PLUGIN_NAME}" ]; then
+#     ln -s /tests_directory/${PLUGIN_NAME} ${PLUGIN_FOLDER}
+#     echo "Plugin folder linked in ${PLUGIN_FOLDER}/${PLUGIN_NAME}"
+# fi
+# if [ ! -d "${PLUGIN_MASTER_FOLDER}/${PLUGIN_NAME}" ]; then
+#     ln -s /tests_directory/${PLUGIN_NAME} ${PLUGIN_MASTER_FOLDER}
+#     echo "Plugin folder linked in ${PLUGIN_MASTER_FOLDER}/${PLUGIN_NAME}"
+# fi
 if  [ ! -L "${PLUGIN_FOLDER}/${PLUGIN_NAME}" ]; then
-    ln -s /tests_directory/${PLUGIN_NAME} ${PLUGIN_FOLDER}
+#     ln -s /tests_directory/${PLUGIN_NAME} ${PLUGIN_FOLDER}
+    cp -r /tests_directory/${PLUGIN_NAME} ${PLUGIN_FOLDER}/${PLUGIN_NAME}
     echo "Plugin folder linked in ${PLUGIN_FOLDER}/${PLUGIN_NAME}"
 fi
 if [ ! -d "${PLUGIN_MASTER_FOLDER}/${PLUGIN_NAME}" ]; then
-    ln -s /tests_directory/${PLUGIN_NAME} ${PLUGIN_MASTER_FOLDER}
+    cp -r /tests_directory/${PLUGIN_NAME} ${PLUGIN_MASTER_FOLDER}/${PLUGIN_NAME}
+#     ln -s /tests_directory/${PLUGIN_NAME} ${PLUGIN_MASTER_FOLDER}
     echo "Plugin folder linked in ${PLUGIN_MASTER_FOLDER}/${PLUGIN_NAME}"
 fi
